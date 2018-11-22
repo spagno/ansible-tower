@@ -1,0 +1,9 @@
+- name: OCP PREREQ
+  hosts: all
+  tasks:
+    - name: Install Docker
+      yum:
+        name: docker
+        state: present
+    - name: Run docker-storage-setup
+      shell: docker-storage-setup
