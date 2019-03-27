@@ -6,8 +6,10 @@
       yum:
         name: docker
         state: present
+      when: docker
     - name: Run docker-storage-setup
       shell: docker-storage-setup
+      when: docker
     - name: Configure Chronyd
       copy:
         src: chrony.conf
