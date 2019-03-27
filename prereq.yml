@@ -8,3 +8,12 @@
         state: present
     - name: Run docker-storage-setup
       shell: docker-storage-setup
+    - name: Configure Chronyd
+      copy:
+        src: chrony.conf
+        dest: /etc/chrony.conf
+    - name: restart Chrony
+      service:
+        name: chronyd
+        state: restarted
+
