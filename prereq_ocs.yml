@@ -1,0 +1,15 @@
+- name: OCS PREREQ
+  hosts: all
+  become: true
+  tasks:
+    - name: Configure Chronyd
+      copy:
+        src: chrony.conf
+        dest: /etc/chrony.conf
+      tags: chrony
+    - name: restart Chrony
+      service:
+        name: chronyd
+        state: restarted
+      tags: chrony
+
